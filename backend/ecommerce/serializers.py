@@ -156,3 +156,38 @@ class OfferApplySerializer(serializers.Serializer):
             "discount_amount": round(discount, 2),
             "final_amount": round(final_amount, 2),
         }
+class CartItemSerializer(serializers.ModelSerializer):
+    product = ProductListSerializer()
+
+    class Meta:
+        model = CartItem
+        fields = ['product', 'quantity']
+
+class WishlistSerializer(serializers.ModelSerializer):
+    product = ProductListSerializer()
+
+    class Meta:
+        model = Wishlist
+        fields = ['product']
+
+class AddToCartSerializer(serializers.Serializer):
+    product_id = serializers.CharField()
+    quantity = serializers.IntegerField(min_value=1)
+
+class UpdateCartSerializer(serializers.Serializer):
+    product_id = serializers.CharField()
+    quantity = serializers.IntegerField(min_value=1)
+
+class AddToWishlistSerializer(serializers.Serializer):
+    product_id = serializers.CharField()
+
+class RemoveFromWishlistSerializer(serializers.Serializer):
+    product_id = serializers.CharField()
+
+class RemoveFromCartSerializer(serializers.Serializer):
+    product_id = serializers.CharField()
+
+class TransferToCartSerializer(serializers.Serializer):
+    product_id = serializers.CharField()
+    quantity = serializers.IntegerField(min_value=1)
+
