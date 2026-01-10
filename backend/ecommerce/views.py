@@ -1,23 +1,21 @@
 from django.http import HttpResponse
-from django.contrib.auth.models import Group
-from rest_framework.decorators import api_view ,permission_classes
-from rest_framework.response import Response
-from .decorators import allowed_users
-from .models import Product , Offer
-from .serializers import OfferApplySerializer, ProductListSerializer ,RegisterSerializer, LoginSerializer, ProductDetailSerializer
 from django.shortcuts import get_object_or_404
-from .models import Product, CartItem, Wishlist
+from django.contrib.auth.models import Group
+
+from .models import Product,, Offer CartItem, Wishlist
+from .decorators import allowed_users
 from .serializers import ProductListSerializer ,RegisterSerializer, LoginSerializer, CartItemSerializer, WishlistSerializer, AddToCartSerializer, UpdateCartSerializer, AddToWishlistSerializer, RemoveFromWishlistSerializer, RemoveFromCartSerializer, TransferToCartSerializer
 
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 
 # Create your views here.
 def home(request):
 
     return HttpResponse("Hi This is home page of our website!!")
-
 
 
 @allowed_users(allowed_roles=['seller'])
