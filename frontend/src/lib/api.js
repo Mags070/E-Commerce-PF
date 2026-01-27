@@ -1,7 +1,7 @@
 //functions in this page: getAuthHeader, refreshToken, fetchProducts, authenticatedFetch, addToCart, fetchCartCount,
 
 
-export const API_BASE = " https://craftroots.onrender.com";
+export const API_BASE = "https://craftroots-1nr7.onrender.com";
 
 function getAuthHeaders() {
   const token = typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
@@ -332,4 +332,5 @@ export async function createReview(payload) {
 
   return res.json();
 }
+
 
